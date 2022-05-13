@@ -1,4 +1,4 @@
-# Primeiro programa em delphi 
+# README Delphi Helpers
 
 - Criacao de classes
   - type TNomeClasse = class
