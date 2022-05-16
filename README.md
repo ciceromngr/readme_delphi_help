@@ -3,7 +3,7 @@
 - Criacao de classes 🔥 🔥 
   - > type TNomeClasse = class🔥 🔥 
   - > Atributos: NomeAtributo : Tipo (pode ser string, integer, etc...)🔥 🔥 
-  - > Methods: procedure NomeDoMetodo, Lembrando que esse procedure ele é uma funcao void🔥 🔥 
+  - > Methods: procedure NomeDoMetodo, Lembrando que esse procedure ele é uma funcao que não tem retorno ou seja void🔥 🔥 
   - >no implementation inicializar os methods : 🔥 🔥 
   
          procedure TNomeClasse.NomeDoMetodo; 
