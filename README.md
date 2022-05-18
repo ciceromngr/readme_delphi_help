@@ -149,6 +149,33 @@ A esquerda deve estar apenas o nome da variável, enquanto que na direita podem 
         {Bloco de comandos executados se a condição for falsa}
     end;
 
+> case of
+
+    var
+      NumeroEscolhido: Integer;
+      RespostaMenssage: String;
+    begin
+
+      NumeroEscolhido := StrToInt(edtNumeroEscolhido.Text);
+      case NumeroEscolhido of
+        1..5: begin // 1 a 5 
+          Memo1.Clear;
+          Memo1.Lines.Add('Semana padrão')
+        end;
+        6: begin
+          Memo1.Clear;
+          Memo1.Lines.Add('Sabado!!')
+        end;
+        7: begin
+          Memo1.Clear;
+          Memo1.Lines.Add('Domingo!!!')
+        end;
+        else
+          ShowMessage('Semana invalida');
+      end;
+
+    end;
+
 ### Referências com o Comando With 🔥🔥
 > O with é como se fosse um comando de leitura e pode ser usado assim:
 
