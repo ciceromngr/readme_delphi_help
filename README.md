@@ -85,7 +85,7 @@ A esquerda deve estar apenas o nome da variável, enquanto que na direita podem 
 
 2 - Os operadores lógicos ou operadores booleanos são utilizados quando é necessário trabalhar com o relacionamento de duas ou mais condições ao mesmo tempo, dentro de um if ou dentro de uma estrutura de teste de um loop.
 
-### Operadores Relacionais🔥 🔥 
+### Operadores Relacionais  🔥🔥 
 > ( > ) Maior que
 
 >( < ) Menor que
@@ -98,8 +98,134 @@ A esquerda deve estar apenas o nome da variável, enquanto que na direita podem 
 
 >( <> )  Diferente de
 
-### Comentários🔥 🔥 
+### Comentários 🔥🔥 
 
 > //  Linha de Comentário
 
 > {} Texto de Comentário - várias linhas
+
+### Condicionais 🔥🔥
+
+> if
+
+    if (condição) then
+      begin
+        {Bloco de comandos executados se a condição for verdadeira}
+      end
+    else
+      begin
+        {Bloco de comandos executados se a condição for falsa}
+    end;
+
+> If encadiado
+
+    if (condição) then
+      begin
+        {Bloco de comandos executados se a condição for verdadeira}
+      end
+    else if (condição) then
+      begin
+          {Bloco de comandos executados se a primeira condição for falsa e está condicao for verdadeira}
+      end
+    else
+      begin
+        {Bloco de comandos executados se a condição for falsa}
+    end;
+### Obs .:
+  > begin e o end são opcionais case ouver uma unica instrução de codigo
+
+    if (condição) then
+        {comando executado se a condição for verdadeira}
+    else
+        {comando executado se a condição for falsa};
+> if not then
+
+    if not (false) then
+      begin
+        {Bloco de comandos executados se a condição for verdadeira}
+      end
+    else
+      begin
+        {Bloco de comandos executados se a condição for falsa}
+    end;
+
+### Referências com o Comando With 🔥🔥
+> O with é como se fosse um comando de leitura e pode ser usado assim:
+
+    with Query1 do
+      begin
+      Close;
+      SQL.CLear;
+      SQL.Add(´Select * from CLientes´);
+      Open;
+    end;
+
+> do contario vc teria que fazer assim:
+
+    Query1.Close;
+    Query1.SQL.CLear;
+    Query1.SQL.Add(´Select * from CLientes´);
+    Query1.Open; 
+
+> para varrer e setar propriedades dos componentes.
+
+- Uso sem with num memo
+
+      memo1.clear;
+      memo1.loadfromfile('');
+      memo1.lines.add('teste1');
+
+- Uso com with num memo
+
+      with memo1 do 
+      begin
+        clear;
+        loadfromfile('');
+        lines.add('teste1');
+      end;
+
+### Loops 🔥🔥
+> for - to - crescente
+
+    var I : Integer;
+    begin
+      for I := 0 to 100 do
+      begin
+        {Bloco a ser executado até o fim do loop}
+      end;
+    end;
+> for - DownTo - decrecente
+
+    var I : Integer;
+    begin
+      for I := 100 DownTo 0 do
+      begin
+        {Bloco a ser executado até o fim do loop}
+      end;
+    end;
+
+> While do
+
+
+    var
+      i : Integer;
+      message: String;
+    begin
+      i := 0;
+
+      while i < 10 do
+      begin
+        if (i mod 2 = 0) then
+        begin
+          message := 'O valor ' + i.ToString() + ' é par! ';
+          ListBox1.Items.Add(message);
+          inc(i);
+        end
+        else
+          begin
+            message := 'O valor ' + i.ToString() + ' é Impar! ';
+            ListBox1.Items.Add(message);
+            inc(i);
+          end;
+      end;
+    end;
