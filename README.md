@@ -229,3 +229,41 @@ A esquerda deve estar apenas o nome da variável, enquanto que na direita podem 
           end;
       end;
     end;
+
+> repeat until
+
+  > - obs :. Para quem vem de outras linguagens o reapeat until seria o mesmo que : do while
+
+    outras linguagens:.
+      do {
+        // o bloco de comandos deve se executado pelo menos 1 vez
+      } while ( condicao ); 
+      // Se a condicao for verdadeira o bloco de codigo e repetido
+
+>
+
+    Delphi  :.
+    var
+      i : Integer;
+      message: String;
+    begin
+      i := 0;
+
+      repeat
+        // o bloco de comandos deve se executado pelo menos 1 vez
+        if (i mod 2 = 0) then
+          begin
+            message := 'O valor ' + i.ToString() + ' é par! ';
+            ListBox1.Items.Add(message);
+            inc(i);
+          end
+        else
+          begin
+            message := 'O valor ' + i.ToString() + ' é Impar! ';
+            ListBox1.Items.Add(message);
+            inc(i);
+          end;
+      until ( i > 10 ); //condicao false o bloco é executado novamente
+      // Preste atencao enquanto o codigo for false ele continua a execucao
+      // 😏 é diferente do tradicional do while que enquanto for verdade o codigo repete  
+    end;
