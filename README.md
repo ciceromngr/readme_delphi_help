@@ -294,3 +294,93 @@ A esquerda deve estar apenas o nome da variável, enquanto que na direita podem 
       // Preste atencao enquanto o codigo for false ele continua a execucao
       // 😏 é diferente do tradicional do while que enquanto for verdade o codigo repete  
     end;
+
+### Arrays 🔥🔥
+####  -> Matriz unidimensional
+> A sintaxe base de uma matriz é bastante simples. Basta definir o nome da variável, o tamanho e o tipo de seus elementos:
+
+    var
+      MinhaMatrizInt: array [0..5] of Integer;
+      MinhaMatrizString: array [0..7] of String;
+      MinhaMatrizDouble: array [0..9] of Double;
+      MinhaMatrizDinamica: array of integer;
+
+## obs :. 🚧🚧 👈 
+
+> Quando uma matriz estática é declarada, os valores de cada elemento assumem valores aleatórios vindos da memória. É possível acessa-los através de seus respectivos índices. Declarar uma matriz estática só é recomendável quando se há certeza de que todos os elementos serão utilizados, pois cada elemento ocupa espaço na memória e isso pode ser bastante problemático em métodos com recursividade ou loops encadeados.
+
+####  -> Matriz bidimensional
+> Uma matriz pode conter elementos que também são matrizes. Isso é vantajoso quando existe a necessidade de armazenar informações que seguem o estilo [x, y]
+
+    procedure TForm1.Exemplo2;
+    var
+      MatrizMulti: array [0..3] of array [0..1] of integer;
+      OutraMatrizMulti: array [0..5, 0..1] of integer; //Declaração alternativa.
+      MinhaMatrizDinamica: array of array of integer;
+    begin
+      MatrizMulti[0][0] := 5;
+      MatrizMulti[0][1] := 10;
+
+      MatrizMulti[1][0] := 15;
+      MatrizMulti[1][1] := 20;
+
+      MatrizMulti[2][0] := 25;
+      MatrizMulti[2][1] := 30;
+
+      MatrizMulti[3][0] := 35;
+      MatrizMulti[3][1] := 40;
+
+      ShowMessage(SizeOf(MatrizMulti).ToString);
+    end;
+####  -> Matriz dinâmicas
+>  Na maioria dos casos trabalharemos com matrizes dinâmicas que precisam aumentar ou diminuir conforme a necessidade do método um exe :.
+
+    private 
+      Vetor: Array of Integer;
+      Matriz: Array of Array of Integer;
+      tamnaho: Integer;
+
+    procedure TForm1.Button1Click(Sender: TObject);
+    var
+      i, j : Integer; // Index do for
+      s: String; // para armazenar uma messagem
+    begin
+
+      tamanho := StrToInt(edtTamanho.Text); // pegar o valor do Edit e passar ele para int
+      mmoResultado.Lines.Clear; // apagar as linhas do Memo
+      Randomize; // avisar ao compilador que vamos utilizar um comando Random
+
+      if rdgTipoArray.ItemIndex = -1 then // radio não selecionado
+      begin
+        ShowMessage('Escolha um tipo de Array/Matriz para obter um resultado!!');
+        Abort; // nao permite que os demais comandos abaixo sejem chamados.
+      end;
+
+      if rdgTipoArray.ItemIndex = 0 then // radio selecionado 
+        begin
+          SetLength(Vetor, tamanho); // Cria o vetor Dinamicamente
+          mmoResultado.Lines.Clear; // apagar as linhas do Memo
+          for i := Low(Vetor) to High(Vetor) do
+          begin
+              Vetor[i] := Random(100);
+              mmoResultado.Lines.Add(Format('Vetor[%2d] = %2d',[i, vetor[i]]));
+          end;
+        end
+      else
+        begin
+          setLength(Matriz, tamanho); // Criar uma matriz Dinamicamente
+          mmoResultado.Lines.Clear; // apagar as linhas do Memo
+          for i := Low(Matriz) to High(Matriz) do
+          begin
+            s :=  Format('%2da. linha = ',[i + 1]);
+            // seta o tamanho da linha
+            setLength(Matriz[i], tamanho); 
+            for j := Low(Matriz[i]) to High(Matriz[i]) do
+            begin
+              Matriz[i, j] := Random(100); // Matriz[0 -> col , 0 -> linha] := numeroAleatorio
+              s := s + Format('%2d ', [Matriz[i,j]]);
+            end;
+            mmoResultado.Lines.Add(s); // mostra no Memo o resultado
+          end;
+        end;
+    end;
